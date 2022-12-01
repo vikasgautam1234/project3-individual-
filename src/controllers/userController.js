@@ -54,7 +54,7 @@ const createUser = async function(req,res){
         if(!isValidPhoneNumber(phone)){
             return res.status(400).send({status : false , message : "invalid phone number"})
         }
-
+//---------------------------------------CREATING USER -------------------------------------------------------
         let user = await userModel.create(data)
         return res.status(201).send({status : false , message : "user created successfully" , data : user})
 
@@ -88,12 +88,11 @@ if(!findUser){
 let token = jwt.sign(
     {
       userId : findUser._id.toString(),
-      expiresIn : "2m"
     },
-   "top-secret-token"
+   "top-secret-token",{expiresIn : "30m"}
 );
 res.setHeader("x-api-key", token);
-return res.status(201).send({status : true, message : "successfully logged in", token : token})
+return res.status(201).send({status : true, token : token ,tokenCreatedAt : new Date() ,message : "your token will expires after 2minute",})
 }
 catch(error){
        return res.status(500).send({status : false, message: error.message}) 

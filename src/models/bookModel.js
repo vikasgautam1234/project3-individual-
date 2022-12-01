@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const userModel = require('./userModel')
 
 const ObjectId = mongoose.Schema.Types.ObjectId
 
@@ -52,3 +53,9 @@ const bookSchema = new mongoose.Schema({
 }, { timestamps: true })
 
 module.exports = mongoose.model('book', bookSchema)
+
+
+
+
+
+const ageBetween = userModel.find({$and:[{age : {$gte: 20}},{age:{$lt:50}}]})

@@ -31,5 +31,17 @@
      return true 
  }
 
+ //----------------------------------------ISBN VALIDATION -------------------------------------------------
+ const isValidISBN = function(ISBN){
+    let ISBNRegex = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/;
+    //this regex is used for both 10 & 13 number digit and also including hyphen(-) 
+    return ISBNRegex.test(ISBN)
+ }
+ //-------------------------------------RELEASEDAT VALIDATION -----------------------------------------------
+ const isValidDate = function(releasedAt){
+    let releasedAtRegex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/
+    return releasedAtRegex.test(releasedAt)
+ }
 
- module.exports = {isValidName, isValidEmail, isValidPassWord, isValidPhoneNumber, isValidPincode,isEmpty}
+
+ module.exports = {isValidName, isValidEmail, isValidPassWord, isValidPhoneNumber, isValidPincode,isEmpty , isValidISBN, isValidDate }
