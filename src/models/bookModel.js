@@ -58,4 +58,3 @@ module.exports = mongoose.model('book', bookSchema)
 
 
 
-const ageBetween = userModel.find({$and:[{age : {$gte: 20}},{age:{$lt:50}}]})
