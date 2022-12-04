@@ -13,7 +13,12 @@ router.get('/test' , function(req,res){
 
 router.post('/register', userController.createUser)
 router.post('/login', userController.loginUser)
-router.post('/books',authware.authentication,bookController.createBook )
 
+
+router.post('/books',authware.authentication,authware.authorization,bookController.createBook ) 
+router.get('/books',authware.authentication, bookController.getBooksFromQuery)
+router.get('/books/:bookId',authware.authentication, bookController.getBookById )
+router.put('/books/:bookId',authware.authentication, authware.authoriseForUpdate, bookController.updateBook )
+router.delete('/books/:bookId',authware.authentication, authware.authoriseForUpdate, bookController.deleteBook )
 
 module.exports = router

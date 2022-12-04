@@ -26,7 +26,7 @@
         return pincodeRegex.test(pincode)
     }
 //-----------------------------VALUE VALIDATION------------------------------------------------------
- const isEmpty = function(value){
+ const isFilled = function(value){
     if(typeof value === "string" && value.trim().length === 0) return false;
      return true 
  }
@@ -44,4 +44,4 @@
  }
 
 
- module.exports = {isValidName, isValidEmail, isValidPassWord, isValidPhoneNumber, isValidPincode,isEmpty , isValidISBN, isValidDate }
+ module.exports = {isValidName, isValidEmail, isValidPassWord, isValidPhoneNumber, isValidPincode, isFilled , isValidISBN, isValidDate }

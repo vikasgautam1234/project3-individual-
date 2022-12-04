@@ -2,7 +2,7 @@ const userModel = require('../models/userModel')
 const validation = require('../validations/validator')
 const jwt = require("jsonwebtoken")
 
-let {isValidName, isValidEmail, isValidPassWord, isValidPhoneNumber, isValidPincode,isEmpty} =validation
+let {isValidName, isValidEmail, isValidPassWord, isValidPhoneNumber, isValidPincode, isFilled} =validation
 const createUser = async function(req,res){
     try{
         let data = req.body
@@ -17,13 +17,13 @@ const createUser = async function(req,res){
         if(title != "Mr"& title != "Mrs"& title != "Miss"){
             return res.status(400).send({status : false , message : "title must be from Mr/Mrs/Miss"})
         }
-        if(!isEmpty(title)){
+        if(!isFilled(title)){
             return res.status(400).send({status : false , message : " title is required"})
         }
-        if(!isEmpty(name)){
+        if(!isFilled(name)){
            return res.status(400).send({status : false , message : "name is required"})
         }
-        if(!isEmpty(email)){
+        if(!isFilled(email)){
             return res.status(400).send({status : false , message : "email is required"})
         }
         //-------------------------------CHECKING THE DUPLICACY OF EMAIL-------------------------------------------
@@ -31,10 +31,10 @@ const createUser = async function(req,res){
         if(uniqueEmail){
             return res.status(400).send({status : false , message : "this email already exists"})
         }
-        if(!isEmpty(password)){
+        if(!isFilled(password)){
             return res.status(400).send({status : false , message : "password is required"})
         }
-        if(!isEmpty(phone)){
+        if(!isFilled(phone)){
             return res.status(400).send({status : false , message : "phone number is required"})
         }
         //-----------------------------------CHECKING PHONE DUPLICACY-------------------------------------
