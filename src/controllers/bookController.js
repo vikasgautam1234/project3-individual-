@@ -206,6 +206,10 @@ const updateBook = async function(req,res){
         return res.status(500).send({status : false , message: error.message})
     }
 }
+
+//---------------------------------DELETE BOOK BY ID----------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------
+
 const deleteBook = async function(req,res){
     try{
        let bookId = req.params.bookId
